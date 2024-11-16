@@ -20,7 +20,32 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "~utils/*": ["./src/utils/*"],
+      "~interfaces/*": ["./src/api/interface/*"],
+      "~api/*": ["./src/api/*"],
+      "~data/*": ["./src/data/*"],
+      "~styles/*": ["./src/styles/*"],
+      "~fonts": ["./src/styles/fonts/fonts.ts"],
+      "~global_styles": ["./src/styles/global/globals.scss"],
+      "~variables": ["./src/styles/variables/index.scss"],
+      "~mixin/*": ["./src/styles/mixin/*"],
+      "~adaptive": ["./src/styles/mixin/_adaptive.scss"],
+      "~hooks/*": ["./src/hooks/*"],
+      "~img/*": ["./public/img/*"],
+      "~svg/*": ["./public/svg/*"],
+
+/*       "~api/*": ["./src/api/*"],
+      "~app/*": ["./src/components/01_app/*"],
+      "~pages/*": ["./src/components/02_pages/*"],
+      "~widgets/*": ["./src/components/03_widgets/*"],
+      "~common/*": ["./src/components/03_commonBlocks/*"],
+      "~features/*": ["./src/components/04_features/*"],
+      "~entities/*": ["./src/components/05_entities/*"],
+      "~shared/*": ["./src/components/06_shared/*"], */
+
+    }
   },
-  "include": ["src"]
+  "include": ["src", "**/*.ts", "**/*.tsx"]
 }
