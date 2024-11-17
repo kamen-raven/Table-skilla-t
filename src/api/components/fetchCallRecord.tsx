@@ -1,21 +1,20 @@
-/*
+
 import { PATH_API } from "../utils/path-api";
-import { CallRecordInterface } from "~interfaces/callRecord.interface";
+
 
 interface FetchCallRecordParams {
   record: string; // 	id записи из списка звонков
-  partnership_id: string; // id партнера из списка звонков
+  partnershipId: string; // id партнера из списка звонков
 }
 
-export default async function fetchCalls(
-  { record, partnership_id }: FetchCallRecordParams
-): Promise<CallRecordInterface> {
-
+export default async function fetchCallRecord(
+  params: FetchCallRecordParams
+): Promise< string  | null>  {
 
   // Формируем строку запроса
   const queryParams = new URLSearchParams();
-  queryParams.append('record', record);
-  queryParams.append('partnership_id', partnership_id);
+  queryParams.append('record', params.record);
+  queryParams.append('partnership_id', params.partnershipId);
 
   const url = `${PATH_API.fetchCall.record}?${queryParams.toString()}`;
 
@@ -27,19 +26,19 @@ export default async function fetchCalls(
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3',
       },
     });
 
     if (!response.ok) {
       throw new Error(`Ошибка при загрузке данных: ${response.statusText}`);
     }
+    const blob = await response.blob();
+    const audioUrl = URL.createObjectURL(blob);
 
-
-    return response.json();
+    return  audioUrl; // Возвращаем объект с URL
   } catch (error) {
-    console.error('Ошибка запроса:', error);
-    throw error;
+    console.error('Ошибка при получении записи звонка:', error);
+    return null;
   }
-}
- */
+};

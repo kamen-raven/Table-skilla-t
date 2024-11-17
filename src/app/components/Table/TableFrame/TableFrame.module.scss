@@ -1,7 +1,72 @@
-.table {
-  max-width: 1440px;
-  width: 100%;
-  margin: 80px auto;
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-bottom: 52px;
+  background-color: $backgroundTable;
+  border-radius: 8px;
+  box-shadow: 0px 4px 5px 0px rgb(233, 237, 243);
+}
 
-  background-color: $red;
+.table {
+  border-collapse: collapse;
+}
+
+.tHead {
+
+
+
+  &__tHeaderData {
+    font-size: $p-md;
+    font-weight: $regular;
+    color: $textSecondary;
+    vertical-align: middle;
+    text-align: start;
+    padding: 0;
+    text-align: -webkit-left;
+
+    &_right {
+      text-align: -webkit-right;
+    }
+  }
+}
+
+
+.tRow {
+  height: 65px;
+
+
+
+
+  &__tHead {}
+
+  &__tBody {
+
+
+    &:hover {
+      background-color: $borderHover;
+      box-shadow: -40px 0 0 $borderHover; // Расширяем фон за пределы таблицы
+      z-index: 1; // Поднимаем строку над другими элементами
+      // cursor: pointer; - убрал потому что это плохо для UI, будто бы вся строка кликабельна, а это не так
+    }
+  }
+
+}
+
+
+.tBody {
+  font-size: $p-lg;
+  color: $textPrimary;
+}
+
+
+
+.tData {
+  border-top: 1px solid $borderTable;
+  padding: 0;
+  text-align: -webkit-left;
+
+  &_right {
+    text-align: -webkit-right;
+  }
 }

@@ -1,0 +1,31 @@
+.headerCellType {
+  //width: 100%;
+  //padding-right: 1rem;
+  box-sizing: border-box;
+
+  &_inOut {
+    max-width: 54px;
+  }
+  &_date {
+    max-width: 88px;
+  }
+  &_personAvatar {
+    max-width: 129px;
+  }
+  &_toNumber {
+    max-width: 325px;
+  }
+  &_source {
+    max-width: 214px;
+  }
+  &_grade {
+    max-width: 198px;
+  }
+  &_record {
+
+  }
+  &_time {
+    max-width: 352px;
+    padding-right: 20px;
+  }
+}

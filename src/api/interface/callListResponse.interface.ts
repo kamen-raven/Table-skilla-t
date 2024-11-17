@@ -17,14 +17,14 @@ export interface CallDataInterface {
   to_number?: string; // Номер, на который был звонок
   to_extension?: string; // Внутренний номер получателя
   is_skilla?: number; // Признак того, что звонок ушел в КЦ
-  status: 'success' | 'fail'; // Статус звонка (например, "Дозвонился" или "Не дозвонился")
+  status: 'Дозвонился' | 'Не дозвонился'; // Статус звонка (например, "Дозвонился" или "Не дозвонился")
   record?: string; // ID записи звонка
   line_number?: string; // Номер линии звонка
   line_name?: string; // Название линии или источника звонка
   in_out?: 1 | 0; // Признак входящего (1) или исходящего (0) звонка
   from_site: number; // Признак звонка с сайта
   source?: string; // Источник звонка
-  errors?: CallErrorInterface[]; // Ошибки, связанные с звонком
+  errors?: string[];//CallErrorInterface[]; // Ошибки, связанные с звонком
   disconnect_reason?: string; // Причина разъединения
   results?: CallResultInterface[]; // Итог звонка
   stages?: StageInterface[]; // Стадии, пройденные сотрудниками

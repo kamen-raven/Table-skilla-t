@@ -1,0 +1,33 @@
+
+.avatarWrapper {
+  position: relative;
+}
+
+.img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.tooltip {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $accent-light;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: $p-sm;
+  color: $textPrimary;
+  opacity: 0;
+  transition: opacity 0.3s;
+  visibility: visible;
+  white-space: nowrap;
+}
+
+.avatarWrapper:hover .tooltip {
+  opacity: 1;  /* Показать тултип при наведении */
+}

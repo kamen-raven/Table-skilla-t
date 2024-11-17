@@ -28,19 +28,27 @@ export const useCallsListStore = create<CallsListStoreInterface>((set, get) => (
     },
     actions: {
       setCallListData: (data) => set({ callListData: data }),
+      // обработчик запроса данных
       fetchCallListData: async (params) => {
-        get().helpers.setLoadingData(true);
+        get().helpers.setLoadingData(true); // устанавливаем обозначение загрузки данных
         get().helpers.setErrorData(null);
 
         try {
           const data = await fetchCalls(params);
-          set({ callListData: data.results });
+
+          if (data.total_rows !== '0') {
+            set({ callListData: data.results });
+          } else {  //* если данных нет, то выводим сообщение об этом
+            get().helpers.setErrorData('Данные за указанный период отсутствуют');
+          }
+
         } catch (error) {
           // Выводим ошибку
-          console.error("Failed to fetch data:", error);
-          get().helpers.setErrorData(`${error}`);
+          console.error("Ошибка при загрузке данных:", error);
+          get().helpers.setErrorData(`Ошибка при загрузке данных: ${error}`);
           // Сбрасываем данные в случае ошибки
           set({ callListData: [] });
+
         } finally {
           get().helpers.setLoadingData(false);
         }
@@ -48,10 +56,3 @@ export const useCallsListStore = create<CallsListStoreInterface>((set, get) => (
     },
   })
 );
-
-    /*
-    if (callListData.length > 0) {
-
-      } else {
-        await useCallsListStore.fetchCallListData();
-      } */

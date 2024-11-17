@@ -1,0 +1,131 @@
+.audioPlayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: $borderTable;
+  border-radius: 48px;
+  width: 100%;
+  max-width: 352px;
+  text-align: left;
+  height: 48px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+
+.time {
+  font-size: $p-lg;
+  line-height: 145%;
+  padding-left: 20px;
+  padding-right: 12px;
+}
+
+.commonButton {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+
+
+.playButton {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+
+  & rect {
+    transition: all .2s linear;
+  }
+
+  & path {
+    transition: all .2s linear;
+  }
+
+  &:hover {
+    & rect {
+      transition: all .2s linear;
+      fill: $blue;
+    }
+
+    & path {
+      transition: all .2s linear;
+      fill: #ffffff;
+    }
+  }
+}
+
+
+
+.progressWrapper {
+  position: relative;
+  flex-grow: 1;
+  max-width: 164px;
+  margin-right: 12px;
+  background-color: $accent;
+  height: 4px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.progressBar {
+  background-color: $blue;
+  height: 4px;
+  border-radius: 50px;
+  width: 0%;
+}
+
+
+.downloadButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-right: 17px;
+
+  & svg {
+    transition: all .2s linear;
+  }
+
+  &:hover {
+    & svg {
+      transition: all .2s linear;
+      fill: $blue;
+    }
+  }
+
+}
+
+.hoverTime {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  transform: translateX(-50%);
+  color: $textPrimary;
+  font-size: $p-md;
+}
+
+
+.closeButton {
+  margin-right: 20px;
+
+  & svg {
+    transition: all .2s linear;
+  }
+
+  &:hover {
+    & svg {
+      transition: all .2s linear;
+      fill: $blue;
+    }
+  }
+}

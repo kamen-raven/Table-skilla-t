@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
 
   flexRender,
@@ -9,59 +9,100 @@ import {
 
 import styles from './TableFrame.module.scss';
 import { TableFrameInterface } from './TableFrame.interface.ts';
+import { tableColumnData } from '../TableColumn/tableColumnData.tsx';
+import useHoverStore from '../../../../store/useHoverStore.ts';
 
-import { CallDataInterface } from '~interfaces/callListResponse.interface';
-import fetchCalls from '~api/components/fetchCallList';
-import { tableHeader } from '../../../../data/tableHeaderData';
+
 
 
 // Функциональный компонент таблицы
 const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
+  const setHoveredRow = useHoverStore((state) => state.setHoveredRow);
 
-
-/*   const [calls, setCalls] = useState<CallDataInterface[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-
- */
-/*   useEffect(() => {
-    const loadCalls = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const data = await fetchCalls({
-          date_start: '2024-11-01',
-          date_end: '2024-11-14',
-          in_out: 1, // Пример для входящих
-          limit: 50,
-        });
-        setCalls(data.results);
-      } catch (err) {
-        setError(`Не удалось загрузить данные: ${err} `);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadCalls();
-  }, []);
- */
 
   const table = useReactTable({
     data: callListData,
-    columns: tableHeader,
+    columns: tableColumnData,
     getCoreRowModel: getCoreRowModel(),
   });
 
+
   return (
-    <div className="table-container">
+
+    <>
+      <div className={styles.tableWrapper}>
+
+        <table className={styles.table}>
+          <thead className={styles.tHead}>
+
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr className={`${styles.tRow} ${styles.tRow__tHead}`}
+                key={headerGroup.id}>
+
+                {headerGroup.headers.map((header) => {
+                  // Проверяем наличие accessorKey
+                  const accessorKey = 'accessorKey' in header.column.columnDef
+                    ? header.column.columnDef.accessorKey
+                    : undefined;
+
+                  return (
+                    <th className={`${styles.tHead__tHeaderData}
+                      ${accessorKey === 'time' ? styles.tHead__tHeaderData_right : ''}
+                    `}
+                      key={header.id}>
+
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+
+                    </th>
+                  )
+                })}
+
+              </tr>
+            ))}
+          </thead>
+          <tbody className={styles.tBody}>
+            {table.getRowModel().rows.map((row) => (
+              <tr className={`${styles.tRow} ${styles.tRow__tBody}`} key={row.id}
+                onMouseEnter={() => setHoveredRow(row.id)}
+                onMouseLeave={() => setHoveredRow(null)}
+              >
+
+                {row.getVisibleCells().map((cell) => {
+                  // Проверяем наличие accessorKey
+                  const accessorKey = 'accessorKey' in cell.column.columnDef
+                    ? cell.column.columnDef.accessorKey
+                    : undefined;
+
+                  return (
 
 
+                    <td className={`${styles.tData}
+                    ${accessorKey === 'time' ? styles.tData_right : ''}`}
+                    key={cell.id}
+                    >
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>)
+                })}
 
-<>
-      <div className="filters">
+              </tr>
+            ))}
+          </tbody>
+          <tfoot className={styles.tFoot}>
+
+          </tfoot>
+        </table >
+      </div >
+    </>
+
+
+  );
+};
+
+export default TableFrame;
+{/*       <div className="filters">
         <select>
           <option value="">Все типы</option>
           <option value="1">Входящие</option>
@@ -74,39 +115,4 @@ const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
 
         </select>
       </div>
-
-
-      <table className="calls-table">
-        <thead className = {styles.table}>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-          </>
-        
-    </div>
-  );
-};
-
-export default TableFrame;
+ */}
