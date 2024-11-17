@@ -1,0 +1,45 @@
+.gradeWrapper {
+
+}
+
+.errorsText {
+  font-size: $p-md;
+  font-weight: $regular;
+  line-height: 100%;
+  color: $red;
+  margin: 0;
+  text-wrap: wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical; // Указываем ориентацию содержимого
+  overflow: hidden; // Скрываем текст, выходящий за пределы
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+}
+
+
+.grade {
+  font-size: $p-md;
+  font-weight: $regular;
+  line-height: 100%;
+  display: inline-flex;
+  padding: 6px 8px;
+  border-radius: 4px;
+
+  &_bad {
+    border: 1px solid $red;
+    background-color: $red-light;
+    color: $red;
+  }
+
+  &_good {
+    border: 1px solid $accent;
+    background-color: $accent-light;
+    color: $textPrimary;
+  }
+
+  &_great {
+    border: 1px solid $green;
+    background-color: $green-light;
+    color: $green;
+  }
+}

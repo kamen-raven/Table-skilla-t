@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useCallsListStore } from '../store/useCallsListStore';
 import styles from './App.module.scss';
-import TableFrame from './components/Table/TableFrame/TableFrame';
 
-import { currentDate, threeDaysAgo } from "~utils/getDate";
+
+import { currentDate, threeDays } from "~utils/date-fns";
+import TableFrame from './components/Table/TableFrame/TableFrame';
 
 
 function App() {
@@ -32,18 +33,31 @@ function App() {
     if (!callListStore.callList.length) {
       //* берем для отображения данные за 3 дня
       fetchCallList({
-        date_start: threeDaysAgo,
+        date_start: '2024-11-10',
         date_end: currentDate
       });
     }
   }, [callListStore.callList, fetchCallList]);
 
+
+
   return (
     <div className={styles.page}>
       <div className={styles.tableContainer}>
-        {loadingStore.loading && <p>Загрузка данных...</p>}
-        {errorStore.error && <p>{errorStore.error}</p>}
-        {!loadingStore.loading && !errorStore.error && callListStore.callList.length > 0 && (
+
+        {loadingStore.loading &&
+          <p className={styles.message}>
+            Загрузка данных...
+          </p>
+        }
+
+        {errorStore.error &&
+          <p className={styles.message}>
+            {errorStore.error}
+          </p>
+        }
+
+        {(!loadingStore.loading && !errorStore.error && callListStore.callList.length > 0) && (
           <TableFrame callListData={callListStore.callList} />
         )}
       </div>

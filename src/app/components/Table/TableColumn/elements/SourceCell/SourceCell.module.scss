@@ -1,0 +1,12 @@
+.source {
+  margin: 0;
+  display: -webkit-box;
+  max-width: 214px;
+  max-height: 60px;
+  color: $textSecondary;
+  text-wrap: wrap;
+  -webkit-box-orient: vertical; // Указываем ориентацию содержимого
+  overflow: hidden; // Скрываем текст, выходящий за пределы
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+}

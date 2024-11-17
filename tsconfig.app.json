@@ -35,6 +35,7 @@
       "~hooks/*": ["./src/hooks/*"],
       "~img/*": ["./public/img/*"],
       "~svg/*": ["./public/svg/*"],
+      "~assets/*": ["./src/assets/svg/*"],
 
 /*       "~api/*": ["./src/api/*"],
       "~app/*": ["./src/components/01_app/*"],

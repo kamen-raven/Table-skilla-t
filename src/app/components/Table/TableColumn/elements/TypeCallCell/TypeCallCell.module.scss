@@ -1,0 +1,29 @@
+.typeWrapper {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typeIcon {
+
+  &__type {
+    &_in {
+      fill: $blue;
+    }
+
+    &_out {
+      transform: rotate(180deg);
+      fill: $green;
+    }
+  }
+
+  &__status {
+    &_fail {
+      fill: $red;
+    }
+  }
+
+
+}
