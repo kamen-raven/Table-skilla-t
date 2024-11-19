@@ -11,14 +11,10 @@ interface CallsListStoreInterface {
     setLoadingData: (value: boolean) => void;
     setErrorData: (value: string | null) => void;
   };
-  sortingBy: "date" | "duration";
-  orderingFrom: "ASC" | "DESC";
-  isSorting: boolean;
+
   actions: {
     setCallListData: (data: CallDataInterface[]) => void;
-    setSort: (sort: "date" | "duration") => void;
-    setOrder: (order: "ASC" | "DESC") => void;
-    setIsSorting: (value: boolean) => void;
+
     fetchCallListData: (params: FetchCallsParams) => Promise<void>;
   };
 }
@@ -33,16 +29,9 @@ export const useCallsListStore = create<CallsListStoreInterface>(
       setErrorData: (value) => set({ errorData: value }),
     },
 
-    sortingBy: "date", // "date" или "duration"
-    orderingFrom: "DESC", // "ASC" или "DESC"
-    isSorting: false,
-
     actions: {
       setCallListData: (data) => set({ callListData: data }),
 
-      setSort: (sort) => set({ sortingBy: sort }),
-      setOrder: (order) => set({ orderingFrom: order }),
-      setIsSorting: (value) => set({ isSorting: value }),
       // обработчик запроса данных
       fetchCallListData: async (params) => {
         get().helpers.setLoadingData(true); // устанавливаем обозначение загрузки данных

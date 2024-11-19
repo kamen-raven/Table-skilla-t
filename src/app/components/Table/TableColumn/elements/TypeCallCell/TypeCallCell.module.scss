@@ -10,12 +10,12 @@
 
   &__type {
     &_in {
-      fill: $blue;
+      fill: $green;
+      transform: rotate(180deg);
     }
 
     &_out {
-      transform: rotate(180deg);
-      fill: $green;
+      fill: $blue;
     }
   }
 

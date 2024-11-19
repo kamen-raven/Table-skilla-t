@@ -13,13 +13,13 @@ import { tableColumnData } from '../TableColumn/tableColumnData.tsx';
 import useInteractionStore from '../../../../store/useInteractionStore.ts';
 
 
-
-
 // Функциональный компонент таблицы
 const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
   const setHoveredRow = useInteractionStore((state) => state.setHoveredRow);
-/*   const setHeaderCellType = useInteractionStore((state) => state.setHeaderCellType);
- */
+
+
+
+
 
   const table = useReactTable({
     data: callListData,
@@ -49,7 +49,7 @@ const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
                   return (
                     <th className={`${styles.tHead__tHeaderData}
                       ${accessorKey === 'time' ? styles.tHead__tHeaderData_right : ''}
-                    `}  key={header.id}  >
+                    `} key={header.id}  >
 
                       {flexRender(
                         header.column.columnDef.header,
@@ -81,7 +81,7 @@ const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
 
                     <td className={`${styles.tData}
                     ${accessorKey === 'time' ? styles.tData_right : ''}`}
-                    key={cell.id}
+                      key={cell.id}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>)
@@ -90,9 +90,6 @@ const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
               </tr>
             ))}
           </tbody>
-          <tfoot className={styles.tFoot}>
-
-          </tfoot>
         </table >
       </div >
     </>

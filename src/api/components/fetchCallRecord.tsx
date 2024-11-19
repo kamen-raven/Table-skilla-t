@@ -18,9 +18,6 @@ export default async function fetchCallRecord(
 
   const url = `${PATH_API.fetchCall.record}?${queryParams.toString()}`;
 
-
-  console.log(url);
-
   try {
     const response = await fetch(url, {
       method: 'POST',

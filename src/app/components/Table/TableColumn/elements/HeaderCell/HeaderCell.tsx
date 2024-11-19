@@ -1,87 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './HeaderCell.module.scss';
 import { HeaderCellInterface } from './HeaderCell.interface';
 import { useCallsListStore } from '../../../../../../store/useCallsListStore';
 import ToggleButton from '../../../../../../assets/svg/ToggleIcon.svg?react';
 import useInteractionStore from '../../../../../../store/useInteractionStore';
 import { currentDate, threeDays } from '~utils/date-fns';
+import useRequestStore from '../../../../../../store/useRequestStore';
 
 const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
-
-
   // стейт кликнутого заголовка
   const headerCellType = useInteractionStore((state) => state.headerCellType); // Текущая активная ячейка
   const setHeaderCellType = useInteractionStore((state) => state.setHeaderCellType); // Обновление активной ячейки
+  // запрос к данным о звонках
+ // const fetchCallList = useCallsListStore((state) => state.actions.fetchCallListData)
 
   // стейт активной сортировки
-  const isSorting = useCallsListStore((state) => state.isSorting);
-  const setIsSorting = useCallsListStore((state) => state.actions.setIsSorting);
-  // запрос к данным о звонках
-  const fetchCallList = useCallsListStore((state) => state.actions.fetchCallListData)
+  const isSorting = useRequestStore((state) => state.isSorting);
+  const setIsSorting = useRequestStore((state) => state.actions.setIsSorting);
   // стейт сортировки по типу
-  const sortBy = useCallsListStore((state) => state.sortingBy);
-  const setSort = useCallsListStore((state) => state.actions.setSort);
-
+  //const sortBy = useRequestStore((state) => state.sortingBy);
+  const setSort = useRequestStore((state) => state.actions.setSort);
   // стейт сортировки по порядку
-  const order = useCallsListStore((state) => state.orderingFrom);
-  const setOrder = useCallsListStore((state) => state.actions.setOrder);
+  const order = useRequestStore((state) => state.orderingFrom);
+  const setOrder = useRequestStore((state) => state.actions.setOrder);
 
 
-  //const [localOrder, setLocalOrder] = useState<"ASC" | "DESC">(order); // Локальный стейт порядка сортировки
-  const [isFetching, setIsFetching] = useState(false); // Новый флаг загрузки
+/*   const [isFetching, setIsFetching] = useState(false); // флаг загрузки */
 
-
-  // Функция изменения типа сортировки
-  const setSortedBy = async() => {
-    if (type === 'date' || type === 'duration') {
-      setIsSorting(true); // Устанавливаем сортировку
-      setHeaderCellType(type); // Обновляем headerCellType
-      setSort(type); // Обновляем критерий сортировки
-    }
-
-    if (type !== headerCellType) {
-      setIsSorting(false); // Устанавливаем сортировку
-    }
-
-
-      if (type === headerCellType && !isFetching) {
-        setIsFetching(true); // Устанавливаем флаг загрузки
-        try {
-          await fetchCallList({
-            date_start: threeDays,
-            date_end: currentDate,
-            sort_by: sortBy,
-            order: order,
-          });
-        } catch (error) {
-          console.error('Ошибка при выполнении fetchCallList:', error);
-        } finally {
-          setIsFetching(false); // Сбрасываем флаг загрузки
-        }
-      }
-
-
-  };
-
-
-
-
-  // Функция изменения порядка сортировки
-  const toggleOrder = async (e: React.MouseEvent) => {
-    e.stopPropagation(); // Предотвращаем конфликт событий
-
-    if (type === 'date' || type === 'duration') {
-      setHeaderCellType(type); // Устанавливаем текущую ячейку активной
-      const newOrder = order === "DESC" ? "ASC" : "DESC";
-      setOrder(newOrder); // Локальный стейт
-      //setLocalOrder(newOrder);
-
-    }
-
-    if (type !== headerCellType) {
-      setIsSorting(false); // Устанавливаем сортировку
-    }
-
+/*   const fetchFunc = async () => {
     if (type === headerCellType && !isFetching) {
       setIsFetching(true); // Устанавливаем флаг загрузки
       try {
@@ -97,24 +43,37 @@ const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
         setIsFetching(false); // Сбрасываем флаг загрузки
       }
     }
+  } */
 
+
+  // Функция изменения типа сортировки
+  const setSortedBy = async() => {
+    if (type === 'date' || type === 'duration') {
+      setIsSorting(true); // Устанавливаем сортировку
+      setHeaderCellType(type); // Обновляем headerCellType
+      setSort(type); // Обновляем критерий сортировки
+    }
+
+    if (type !== headerCellType) {
+      setIsSorting(false); // Устанавливаем сортировку
+    }
+
+/*     fetchFunc(); */
   };
 
 
-  /*   // API-запрос при изменении сортировки
-    useEffect(() => {
-      if (sortBy) {
-        fetchCallList({
-          date_start: '2024-11-01',
-          date_end: '2024-11-10',
-          sort_by: sortBy,
-          order: localOrder,
-        });
-      }
-    }, [sortBy, localOrder, fetchCallList]);
+  // Функция изменения порядка сортировки
+  const toggleOrder = async (e: React.MouseEvent) => {
+    e.stopPropagation(); // Предотвращаем конфликт событий
 
-   */
+    if (type === 'date' || type === 'duration') {
+      setHeaderCellType(type); // Устанавливаем текущую ячейку активной
+      const newOrder = order === "DESC" ? "ASC" : "DESC";
+      setOrder(newOrder);
+    }
 
+    setSortedBy();
+  };
 
 
   // Данные для заголовков и стилей
@@ -139,11 +98,11 @@ const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
 
       {/* сортировка во ВРЕМЕНИ и ДЛИТЕЛЬНОСТИ */}
       {type === "date" || type === 'duration' ?
-        <span className={`${styles.toggleOrder}
-          ${type === headerCellType && order === 'DESC' ? styles.toggleOrder_desc : styles.toggleOrder_asc}`}
+        <div className={`${styles.toggleOrder}
+          ${(type === headerCellType) && isSorting && order === 'DESC' ? styles.toggleOrder_asc : styles.toggleOrder_desc}`}
           onClick={toggleOrder}>
-          <ToggleButton />
-        </span>
+          <ToggleButton  style={{ fill: (type === headerCellType) && isSorting ? 'blue' : '' } } />
+        </div>
         : null
       }
     </div>

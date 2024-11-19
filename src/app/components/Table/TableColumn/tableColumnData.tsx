@@ -2,17 +2,6 @@ import { CellContext } from '@tanstack/react-table';
 import { CallDataInterface } from '~interfaces/callListResponse.interface';
 import { DurationCell, EmployeeCell, GradeCell, HeaderCell, PhoneCell, SourceCell, TimeCell, TypeCallCell } from './elements';
 
-//  данные шапки таблицы
-/*   in_out: number;
-  date: string;
-  person_avatar: string; // аватар сотрудника
-  to_number: string;
-  source: string;
-  is_skilla: number;
-  time: number;
-  employee_name: string; // Дополнительные данные (имя сотрудника) */
-
-
 // Определяем колонки
 export const tableColumnData = [
   //* ТИП НОМЕРА
