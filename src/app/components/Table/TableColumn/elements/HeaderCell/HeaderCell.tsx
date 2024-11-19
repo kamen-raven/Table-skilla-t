@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './HeaderCell.module.scss';
 import { HeaderCellInterface } from './HeaderCell.interface';
-<<<<<<< HEAD
 import ToggleButton from '../../../../../../assets/svg/ToggleIcon.svg?react';
 import useInteractionStore from '../../../../../../store/useInteractionStore';
 import useRequestStore from '../../../../../../store/useRequestStore';
@@ -82,53 +81,6 @@ const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
       }
     </div>
   );
-=======
-
-
-const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
-  const setData = {
-    in_out: {
-      style: styles.headerCellType_inOut,
-      title: 'Тип'
-    },
-    date: {
-      style: styles.headerCellType_date,
-      title: 'Время'
-    },
-    person_avatar: {
-      style: styles.headerCellType_personAvatar,
-      title: 'Сотрудник'
-    },
-    to_number: {
-      style: styles.headerCellType_toNumber,
-      title: 'Звонок'
-    },
-    source: {
-      style: styles.headerCellType_source,
-      title: 'Источник'
-    },
-    grade: {
-      style: styles.headerCellType_grade,
-      title: 'Оценка'
-    },
-    record: {
-      style: styles.headerCellType_record,
-      title: ''
-    },
-    time: {
-      style: styles.headerCellType_time,
-      title: 'Длительность'
-    },
-  }
-
-
-
-    return (
-        <div className={`${styles.headerCellType} ${setData[type].style}`}>
-          {setData[type].title}
-        </div>
-    );
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 };
 
 export { HeaderCell };

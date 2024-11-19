@@ -1,29 +1,19 @@
-<<<<<<< HEAD
 import { format, parse, subDays } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { ru } from 'date-fns/locale';
-=======
-import { format, subDays } from 'date-fns';
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 
 // Получаем текущую дату
 const currentDate = format(new Date(), 'yyyy-MM-dd');
 
-<<<<<<< HEAD
 //  Получаем вчерашнюю дату
 const yesterdayDate = format(subDays(currentDate, 1), 'yyyy-MM-dd');
 
-=======
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 // Вычитаем 2 дня (включая текущий день, то есть текущий — 1 день)
 const threeDays = format(subDays(currentDate, 2), 'yyyy-MM-dd');
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 function formatTimeWithDateFns(dateString: string): string {
   const date = new Date(dateString); // Преобразуем строку в объект Date
   return format(date, 'HH:mm'); // Форматируем в ЧЧ:ММ
@@ -53,7 +43,6 @@ function formatTimeFromSeconds(seconds: number): string {
   return formattedTime;
 }
 
-<<<<<<< HEAD
 // Функция преобразования даты
 const formattingDate = (dateString: string): string => {
   const parsedDate = parse(dateString, 'yyyy-MM-dd', new Date());
@@ -79,13 +68,3 @@ export {
   formatDateInMoscowTime
 }
 
-=======
-
-export {
-  currentDate,
-  threeDays,
-  formatTimeWithDateFns,
-  formatTimeFromMinutes,
-  formatTimeFromSeconds
-}
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f

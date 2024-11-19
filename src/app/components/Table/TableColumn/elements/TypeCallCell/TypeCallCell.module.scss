@@ -10,21 +10,12 @@
 
   &__type {
     &_in {
-<<<<<<< HEAD
       fill: $green;
       transform: rotate(180deg);
     }
 
     &_out {
       fill: $blue;
-=======
-      fill: $blue;
-    }
-
-    &_out {
-      transform: rotate(180deg);
-      fill: $green;
->>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
     }
   }
 
