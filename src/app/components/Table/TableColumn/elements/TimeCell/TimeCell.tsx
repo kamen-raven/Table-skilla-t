@@ -5,11 +5,11 @@ import { formatTimeWithDateFns } from '~utils/date-fns';
 
 
 const TimeCell: React.FC<TimeCellInterface> = ({ timeData }) => {
-  const time = formatTimeWithDateFns(timeData);  //!
+  const time = formatTimeWithDateFns(timeData);
 
   return (
     <p className={styles.time}>
-      {timeData}
+      {time}
     </p>
   );
 };

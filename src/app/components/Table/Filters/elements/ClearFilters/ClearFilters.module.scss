@@ -1,0 +1,17 @@
+.clearButton {
+  background-color: transparent;
+  border: none;
+
+
+  font-size: $p-md;
+  color: $textSecondary;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+
+  & svg {
+    width: 8px;
+    height: 8px;
+  }
+}

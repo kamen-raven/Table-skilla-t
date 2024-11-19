@@ -1,0 +1,24 @@
+.tBody {
+  font-size: $p-lg;
+  color: $textPrimary;
+}
+
+.dateInfoRow {
+  border: none;
+}
+
+.dateInfoCell {
+  padding: 40px 0 16px;
+}
+
+.date {
+  margin: 0;
+  font-size: $p-md;
+
+}
+.count {
+  vertical-align: super;
+  font-size: $p-sm;
+  color: $textSecondary;
+  padding-left: 2px;
+}

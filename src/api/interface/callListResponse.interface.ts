@@ -10,7 +10,7 @@ export interface CallDataInterface {
   partnership_id?: string;
   partner_data?: PartnerDataInterface;
   date: string; // Дата и время звонка //???
-  date_notime?: string; // Дата без времени  //???
+  date_notime: string; // Дата без времени  //???
   time?: number; // Длительность звонка в секундах //???
   from_number?: string; // Номер, с которого был звонок
   from_extension?: string; // Внутренний номер звонящего

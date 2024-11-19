@@ -1,4 +1,40 @@
-import React, { useEffect, useRef, useState } from 'react';
+// components/FilterByType/FilterByType.tsx
+import React from 'react';
+import useRequestStore from '../../../../../../store/useRequestStore.ts';
+import CustomDropdown from '../CustomSelect/CustomDropdown.tsx';
+
+
+const FilterByType: React.FC = () => {
+  const inOutFilter = useRequestStore((state) => state.inOutFilter);
+  const setInOutFilter = useRequestStore((state) => state.actions.setInOutFilter);
+  const setIsSorting = useRequestStore((state) => state.actions.setIsSorting);
+  const options = [
+    { value: 'all', label: 'Все типы' },
+    { value: '1', label: 'Входящие' },
+    { value: '0', label: 'Исходящие' },
+  ];
+
+  const handleSelect = (value: 0 | 1 | "all") => {
+    setInOutFilter(value);
+    setIsSorting(true);
+  };
+
+  return (
+
+      <CustomDropdown
+        options={options}
+        selectedValue={inOutFilter}
+        onSelectType={handleSelect}
+        type={'type'}
+      />
+
+  );
+};
+
+export { FilterByType };
+
+
+/* import React, { useEffect, useRef, useState } from 'react';
 import styles from './FilterByType.module.scss';
 import useRequestStore from '../../../../../../store/useRequestStore.ts';
 import ToggleIcon from '../../../../../../assets/svg/ToggleIcon.svg?react';
@@ -40,23 +76,25 @@ const FilterByType: React.FC = () => {
     };
   }, []);
 
+  // Условие для изменения цвета
+  const isSelectedNotAll = inOutFilter !== 'all';
 
 
   return (
     <div className={styles.selectWrapper} ref={dropdownRef}>
-      {/* Кнопка для открытия/закрытия селекта */}
+
       <button
         type="button"
-        className={styles.selectButton}
+        className={`${styles.selectButton} ${isSelectedNotAll ? styles.selectedButton : ''}`}
         onClick={toggleDropdown}
         aria-expanded={isOpen}
         aria-controls="filterByTypeOptions"
       >
-        {options.find((option) => option.value === inOutFilter)?.label || "Выбрать"}
+        {options.find((option) => option.value === inOutFilter)?.label}
         <ToggleIcon/>
       </button>
 
-      {/* Список опций */}
+
       {isOpen && (
         <div className={styles.options} id="filterByTypeOptions" role="listbox">
           {options.map((option) => (
@@ -77,3 +115,4 @@ const FilterByType: React.FC = () => {
 };
 
 export { FilterByType };
+ */

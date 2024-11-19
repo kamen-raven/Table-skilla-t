@@ -1,0 +1,43 @@
+.dateFilter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    & svg {
+      fill: $blue-accent;
+    }
+  }
+
+  &_left {
+    transform: rotate(-90deg);
+  }
+
+  &_right {
+    transform: rotate(90deg);
+
+  }
+}
+
+.selectWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &:hover {
+    & svg {
+      fill: $blue-accent;
+    }
+  }
+}
+
+
+.calendarIcon {
+  width: 16px;
+  height: 18px;
+}

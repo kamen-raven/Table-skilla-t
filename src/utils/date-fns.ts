@@ -1,10 +1,16 @@
-import { format, subDays } from 'date-fns';
+import { format, parse, subDays } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 // Получаем текущую дату
 const currentDate = format(new Date(), 'yyyy-MM-dd');
 
+//  Получаем вчерашнюю дату
+const yesterdayDate = format(subDays(currentDate, 1), 'yyyy-MM-dd');
+
 // Вычитаем 2 дня (включая текущий день, то есть текущий — 1 день)
 const threeDays = format(subDays(currentDate, 2), 'yyyy-MM-dd');
+
+
 
 
 function formatTimeWithDateFns(dateString: string): string {
@@ -36,11 +42,19 @@ function formatTimeFromSeconds(seconds: number): string {
   return formattedTime;
 }
 
+// Функция преобразования даты
+const formattingDate = (dateString: string): string => {
+  const parsedDate = parse(dateString, 'yyyy-MM-dd', new Date());
+  return format(parsedDate, 'dd MMMM yyyy', { locale: ru });
+};
+
 
 export {
   currentDate,
+  yesterdayDate,
   threeDays,
   formatTimeWithDateFns,
   formatTimeFromMinutes,
-  formatTimeFromSeconds
+  formatTimeFromSeconds,
+  formattingDate
 }

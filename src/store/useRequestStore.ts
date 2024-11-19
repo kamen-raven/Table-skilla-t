@@ -8,6 +8,7 @@ interface RequestStoreInterface {
   sortingBy: "date" | "duration";
   orderingFrom: "ASC" | "DESC";
   isSorting: boolean;
+  dateLabel: '3days' | 'week' | 'month' | 'year' | 'custom';
   actions: {
     setDateStart: (date: string) => void;
     setDateEnd: (date: string) => void;
@@ -15,6 +16,7 @@ interface RequestStoreInterface {
     setSort: (sort: "date" | "duration") => void;
     setOrder: (order: "ASC" | "DESC") => void;
     setIsSorting: (value: boolean) => void;
+    setDateLabel: (value: '3days' | 'week' | 'month' | 'year' | 'custom') => void;
   };
 }
 
@@ -25,6 +27,7 @@ const useRequestStore = create<RequestStoreInterface>((set) => ({
   sortingBy: "date", // "date" или "duration"
   orderingFrom: "DESC", // "ASC" или "DESC"
   isSorting: false,
+  dateLabel: '3days',
   actions: {
     setDateStart: (date) => set({ dateStart: date }),
     setDateEnd: (date) => set({ dateEnd: date }),
@@ -32,6 +35,7 @@ const useRequestStore = create<RequestStoreInterface>((set) => ({
     setSort: (sort) => set({ sortingBy: sort }),
     setOrder: (order) => set({ orderingFrom: order }),
     setIsSorting: (value) => set({ isSorting: value }),
+    setDateLabel: (value) => set({ dateLabel: value }),
   },
 }));
 

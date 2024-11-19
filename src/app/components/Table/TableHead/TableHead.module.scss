@@ -1,0 +1,20 @@
+.tHead {
+  &__tHeaderData {
+    text-align: -webkit-left;
+    padding: 0;
+    vertical-align: middle;
+    text-align: start;
+    font-size: $p-md;
+    font-weight: $regular;
+    color: $textSecondary;
+
+    &_right {
+      text-align: -webkit-right;
+    }
+  }
+}
+
+
+.tHeadRow {
+  height: 65px;
+}

@@ -1,0 +1,22 @@
+.tRow {
+  height: 65px;
+
+  &:hover {
+    background-color: $borderHover;
+    box-shadow: -40px 0 0 $borderHover; // Расширяем фон за пределы таблицы
+    z-index: 1; // Поднимаем строку над другими элементами
+    // cursor: pointer; - убрал потому что это плохо для UI, будто бы вся строка кликабельна, а это не так
+  }
+}
+
+
+
+.tData {
+  border-top: 1px solid $borderTable;
+  padding: 0;
+  text-align: -webkit-left;
+
+  &_right {
+    text-align: -webkit-right;
+  }
+}
