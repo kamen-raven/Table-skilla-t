@@ -1,4 +1,5 @@
 import { format, parse, subDays } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { ru } from 'date-fns/locale';
 
 // Получаем текущую дату
@@ -48,6 +49,13 @@ const formattingDate = (dateString: string): string => {
   return format(parsedDate, 'dd MMMM yyyy', { locale: ru });
 };
 
+// Функция для преобразования даты в Московское время
+const formatDateInMoscowTime = (date: Date): string => {
+  const moscowTime = formatInTimeZone(date, 'Europe/Moscow', 'yyyy-MM-dd'); // Преобразуем в UTC по Московскому времени
+  return format(moscowTime, 'yyyy-MM-dd'); // Форматируем в 'yyyy-MM-dd'
+};
+
+
 
 export {
   currentDate,
@@ -56,5 +64,7 @@ export {
   formatTimeWithDateFns,
   formatTimeFromMinutes,
   formatTimeFromSeconds,
-  formattingDate
+  formattingDate,
+  formatDateInMoscowTime
 }
+

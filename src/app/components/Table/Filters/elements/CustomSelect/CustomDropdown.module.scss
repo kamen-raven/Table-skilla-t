@@ -45,14 +45,58 @@
 .option {
   font-size: $p-sm;
   line-height: 18px;
-  padding: 7px 12px;
   cursor: pointer;
 
   &:hover {
     background-color:rgba($color: $blue, $alpha: .13);
   }
+
+  &_type {
+    padding: 7px 12px;
+  }
+
+  &_date {
+    padding: 7px 20px;
+  }
+
+  &_custom {
+    padding: 7px 20px 26px;
+  }
 }
 
 .selected {
   color: $blue-accent;
+}
+
+
+.dateTitle {
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.datePickers {
+  display: flex;
+
+  color: $accent;
+}
+
+.pickler {
+  font-size: $p-md;
+  color: $accent;
+  background: transparent;
+  border: none;
+  width: 58px;
+
+  &::placeholder {
+    color: $accent;
+  }
+}
+
+
+.applyButton {
+  background: transparent;
+  border: none;
+  width: 16px;
+  height: 16px;
+margin-left: auto;
 }

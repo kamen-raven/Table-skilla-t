@@ -41,6 +41,8 @@ function App() {
         {errorStore.error &&
           <p className={styles.message}>
             {errorStore.error}
+            <br/>
+            Пожалуйста, обновите страницу и попробуйте заново
           </p>
         }
 

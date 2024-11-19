@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './HeaderCell.module.scss';
 import { HeaderCellInterface } from './HeaderCell.interface';
-import { useCallsListStore } from '../../../../../../store/useCallsListStore';
 import ToggleButton from '../../../../../../assets/svg/ToggleIcon.svg?react';
 import useInteractionStore from '../../../../../../store/useInteractionStore';
-import { currentDate, threeDays } from '~utils/date-fns';
 import useRequestStore from '../../../../../../store/useRequestStore';
 
 const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
@@ -24,28 +22,6 @@ const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
   const order = useRequestStore((state) => state.orderingFrom);
   const setOrder = useRequestStore((state) => state.actions.setOrder);
 
-
-/*   const [isFetching, setIsFetching] = useState(false); // флаг загрузки */
-
-/*   const fetchFunc = async () => {
-    if (type === headerCellType && !isFetching) {
-      setIsFetching(true); // Устанавливаем флаг загрузки
-      try {
-        await fetchCallList({
-          date_start: threeDays,
-          date_end: currentDate,
-          sort_by: sortBy,
-          order: order,
-        });
-      } catch (error) {
-        console.error('Ошибка при выполнении fetchCallList:', error);
-      } finally {
-        setIsFetching(false); // Сбрасываем флаг загрузки
-      }
-    }
-  } */
-
-
   // Функция изменения типа сортировки
   const setSortedBy = async() => {
     if (type === 'date' || type === 'duration') {
@@ -57,8 +33,6 @@ const HeaderCell: React.FC<HeaderCellInterface> = ({ type }) => {
     if (type !== headerCellType) {
       setIsSorting(false); // Устанавливаем сортировку
     }
-
-/*     fetchFunc(); */
   };
 
 
