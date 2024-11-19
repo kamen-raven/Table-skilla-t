@@ -8,7 +8,7 @@ export interface HeaderCellInterface
       | "to_number"
       | "source"
       | "grade"
-      | "record"
-      | "time";
+      | "duration";
   children?: ReactNode;
+
 }

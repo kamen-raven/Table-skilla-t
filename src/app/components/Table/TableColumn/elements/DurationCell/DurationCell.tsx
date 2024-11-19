@@ -4,11 +4,11 @@ import { DurationCellInterface } from './DurationCell.interface';
 import { formatTimeFromSeconds } from '~utils/date-fns';
 import fetchCallRecord from '~api/components/fetchCallRecord';
 import { AudioPlayer } from '../../../../AudioPlayer/AudioPlayer';
-import useHoverStore from '../../../../../../store/useHoverStore';
+import useInteractionStore from '../../../../../../store/useInteractionStore';
 
 
 const DurationCell: React.FC<DurationCellInterface> = ({ duration, rowId, record, partnershipId }) => {
-  const hoveredRow = useHoverStore((state) => state.hoveredRowId);
+  const hoveredRow = useInteractionStore((state) => state.hoveredRowId);
 
   const [isVisible, setIsVisible] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);

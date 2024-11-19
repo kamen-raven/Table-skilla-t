@@ -7,6 +7,8 @@ export interface FetchCallsParams {
   date_end: string; // Конечная дата в формате 'YYYY-MM-DD'
   in_out?: 0 | 1; // Тип звонков (0 - исходящие, 1 - входящие)
   limit?: number; // Лимит записей
+  sort_by?: "date" | "duration";
+  order?: "ASC" | "DESC";
 }
 
 export default async function fetchCalls(
@@ -20,6 +22,8 @@ export default async function fetchCalls(
   queryParams.append('date_end', params.date_end);
   if (params.in_out !== undefined) queryParams.append('in_out', params.in_out.toString());
   if (params.limit !== undefined) queryParams.append('limit', params.limit.toString());
+  if (params.sort_by) queryParams.append('sort_by', params.sort_by);
+  if (params.order) queryParams.append('order', params.order);
 
   const url = `${PATH_API.fetchCall.list}?${queryParams.toString()}`;
 

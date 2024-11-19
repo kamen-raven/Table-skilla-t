@@ -6,26 +6,68 @@
   &_inOut {
     max-width: 54px;
   }
+
   &_date {
     max-width: 88px;
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+
+    &_active {
+      color: $blue;
+    }
   }
+
   &_personAvatar {
     max-width: 129px;
   }
+
   &_toNumber {
     max-width: 325px;
   }
+
   &_source {
     max-width: 214px;
   }
+
   &_grade {
     max-width: 198px;
   }
-  &_record {
 
-  }
+  &_record {}
+
   &_time {
     max-width: 352px;
     padding-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    cursor: pointer;
+
+    &_active {
+      color: $blue;
+    }
   }
+}
+
+.isSorting {
+  color: $blue;
+}
+
+.toggleOrder {
+  width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_asc {
+
+  }
+
+  &_desc {
+    & svg {
+      transform: rotate(180deg);
+    }
+  }
+
 }

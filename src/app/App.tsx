@@ -30,14 +30,22 @@ function App() {
 
   // если у нас нет данных, то обращаемся за ними
   useEffect(() => {
-    if (!callListStore.callList.length) {
-      //* берем для отображения данные за 3 дня
-      fetchCallList({
-        date_start: threeDays,
-        date_end: currentDate
-      });
+    const firstRender = async () => {
+      if (!callListStore.callList.length) {
+        //* берем для отображения данные за 3 дня
+        fetchCallList({
+          date_start: threeDays,
+          date_end: currentDate,
+        });
+      }
     }
-  }, [callListStore.callList, fetchCallList]);
+
+    firstRender();
+  }, [callListStore.callList.length, fetchCallList]);
+
+
+  
+
 
 
 
@@ -47,7 +55,7 @@ function App() {
 
         {loadingStore.loading &&
           <p className={styles.message}>
-            Загрузка данных...
+            Загрузка...
           </p>
         }
 

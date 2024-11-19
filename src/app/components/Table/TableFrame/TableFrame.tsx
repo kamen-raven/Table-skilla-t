@@ -10,15 +10,16 @@ import {
 import styles from './TableFrame.module.scss';
 import { TableFrameInterface } from './TableFrame.interface.ts';
 import { tableColumnData } from '../TableColumn/tableColumnData.tsx';
-import useHoverStore from '../../../../store/useHoverStore.ts';
+import useInteractionStore from '../../../../store/useInteractionStore.ts';
 
 
 
 
 // Функциональный компонент таблицы
 const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
-  const setHoveredRow = useHoverStore((state) => state.setHoveredRow);
-
+  const setHoveredRow = useInteractionStore((state) => state.setHoveredRow);
+/*   const setHeaderCellType = useInteractionStore((state) => state.setHeaderCellType);
+ */
 
   const table = useReactTable({
     data: callListData,
@@ -48,8 +49,7 @@ const TableFrame: React.FC<TableFrameInterface> = ({ callListData }) => {
                   return (
                     <th className={`${styles.tHead__tHeaderData}
                       ${accessorKey === 'time' ? styles.tHead__tHeaderData_right : ''}
-                    `}
-                      key={header.id}>
+                    `}  key={header.id}  >
 
                       {flexRender(
                         header.column.columnDef.header,

@@ -106,7 +106,7 @@ export const tableColumnData = [
   //* ДЛИТЕЛЬНОСТЬ
   {
     accessorKey: 'time',
-    header: () => <HeaderCell type={'time'} />,
+    header: () => <HeaderCell type={'duration'} />,
     cell: ({ getValue, row }: CellContext<CallDataInterface, number>) => {
       const duration = getValue();
       const rowId = row.id;
