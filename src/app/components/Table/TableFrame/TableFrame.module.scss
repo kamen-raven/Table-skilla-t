@@ -10,4 +10,66 @@
 
 .table {
   border-collapse: collapse;
+<<<<<<< HEAD
+=======
+}
+
+.tHead {
+
+
+
+  &__tHeaderData {
+    font-size: $p-md;
+    font-weight: $regular;
+    color: $textSecondary;
+    vertical-align: middle;
+    text-align: start;
+    padding: 0;
+    text-align: -webkit-left;
+
+    &_right {
+      text-align: -webkit-right;
+    }
+  }
+}
+
+
+.tRow {
+  height: 65px;
+
+
+
+
+  &__tHead {}
+
+  &__tBody {
+
+
+    &:hover {
+      background-color: $borderHover;
+      box-shadow: -40px 0 0 $borderHover; // Расширяем фон за пределы таблицы
+      z-index: 1; // Поднимаем строку над другими элементами
+
+    }
+  }
+
+}
+
+
+.tBody {
+  font-size: $p-lg;
+  color: $textPrimary;
+}
+
+
+
+.tData {
+  border-top: 1px solid $borderTable;
+  padding: 0;
+  text-align: -webkit-left;
+
+  &_right {
+    text-align: -webkit-right;
+  }
+>>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 }

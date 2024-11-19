@@ -2,6 +2,20 @@ import { CellContext } from '@tanstack/react-table';
 import { CallDataInterface } from '~interfaces/callListResponse.interface';
 import { DurationCell, EmployeeCell, GradeCell, HeaderCell, PhoneCell, SourceCell, TimeCell, TypeCallCell } from './elements';
 
+<<<<<<< HEAD
+=======
+//  данные шапки таблицы
+/*   in_out: number;
+  date: string;
+  person_avatar: string; // аватар сотрудника
+  to_number: string;
+  source: string;
+  is_skilla: number;
+  time: number;
+  employee_name: string; // Дополнительные данные (имя сотрудника) */
+
+
+>>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
 // Определяем колонки
 export const tableColumnData = [
   //* ТИП НОМЕРА
@@ -95,16 +109,27 @@ export const tableColumnData = [
   //* ДЛИТЕЛЬНОСТЬ
   {
     accessorKey: 'time',
+<<<<<<< HEAD
     header: () => <HeaderCell type={'duration'} />,
     cell: ({ getValue, row }: CellContext<CallDataInterface, number>) => {
       const duration = getValue();
       const rowId = row.id;
 
+=======
+    header: () => <HeaderCell type={'time'} />,
+    cell: ({ getValue, row }: CellContext<CallDataInterface, number>) => {
+      const duration = getValue();
+  
+>>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
       const record = row.original.record;
       const partnershipId = row.original.partnership_id;
 
       return (
+<<<<<<< HEAD
         <DurationCell duration={duration} rowId={rowId} record={record} partnershipId={partnershipId} />
+=======
+        <DurationCell duration={duration} record={record} partnershipId={partnershipId} />
+>>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
       );
     },
 

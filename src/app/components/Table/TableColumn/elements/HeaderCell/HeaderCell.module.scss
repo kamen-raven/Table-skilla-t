@@ -6,6 +6,7 @@
   &_inOut {
     max-width: 54px;
   }
+<<<<<<< HEAD
 
   &_date {
     max-width: 88px;
@@ -71,3 +72,28 @@
   }
 
 }
+=======
+  &_date {
+    max-width: 88px;
+  }
+  &_personAvatar {
+    max-width: 129px;
+  }
+  &_toNumber {
+    max-width: 325px;
+  }
+  &_source {
+    max-width: 214px;
+  }
+  &_grade {
+    max-width: 198px;
+  }
+  &_record {
+
+  }
+  &_time {
+    max-width: 352px;
+    padding-right: 20px;
+  }
+}
+>>>>>>> a08a0698e20b2ee794f724a6e9c52ba27801396f
