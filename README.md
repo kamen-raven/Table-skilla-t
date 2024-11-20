@@ -31,4 +31,4 @@
 - URL-адрес API и Authorization-token скрыты от загрузки на репозиторий; внесены на сервер Vercel через настройки безопасности.
 
 ---
-Проект доступен [по ссылке на Vercel:](https://table-skilla-t.vercel.app/).
+Проект доступен [по ссылке на Vercel](https://table-skilla-t.vercel.app/) | [Макет в Figma](https://www.figma.com/design/yfFIzjZSTuLBR3FROcS26a/TZ-FRONT-2024?node-id=1-223&node-type=frame&t=gjV5uKIfMWkBVmht-0)
